@@ -1,4 +1,4 @@
-import { NowRequest, NowResponse } from "@now/node";
+import { VercelRequest, VercelResponse } from "@vercel/node";
 import querystring from "querystring";
 
 import { AuthConfig } from "../types";
@@ -6,7 +6,7 @@ import ShopifyError, { ErrorResponse } from "./errors";
 import validateHmac from "./validate-hmac";
 
 export default function createOAuthCallback(config: AuthConfig) {
-	return async function oAuthCallback(req: NowRequest, res: NowResponse) {
+	return async function oAuthCallback(req: VercelRequest, res: VercelResponse) {
 		const query = req.query as Record<string, string>;
 		const { code, hmac, shop, state: nonce } = query;
 		const { apiKey, secret, afterAuth } = config;

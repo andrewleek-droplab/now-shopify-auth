@@ -1,4 +1,4 @@
-import { NowRequest, NowResponse } from "@now/node";
+import { VercelRequest, VercelResponse } from "@vercel/node";
 
 import { OAuthStartOptions } from "../types";
 import ShopifyError, { ErrorResponse } from "./errors";
@@ -8,7 +8,7 @@ import redirect from "../helpers/redirect";
 import { destroyCookie } from "../helpers/nookies";
 
 export default function createOAuthStart(options: OAuthStartOptions, callbackPath: string) {
-	return function oAuthStart(req: NowRequest, res: NowResponse) {
+	return function oAuthStart(req: VercelRequest, res: VercelResponse) {
 		const config: OAuthStartOptions = {
 			myShopifyDomain: DEFAULT_MYSHOPIFY_DOMAIN,
 			accessMode: DEFAULT_ACCESS_MODE,

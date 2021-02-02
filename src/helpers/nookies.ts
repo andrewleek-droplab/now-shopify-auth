@@ -1,16 +1,12 @@
 import nookies from "nookies";
-import { IncomingMessage, ServerResponse } from "http";
+import { ServerResponse } from "http";
 
 type BaseParams = {
-	req?: IncomingMessage | null;
-	res?: ServerResponse | null;
+	res: ServerResponse | null | undefined;
 	name: string,
 };
 
-function buildContext({ req, res }: Pick<BaseParams, "req" | "res">) {
-	if (req !== null && req !== undefined) {
-		return { req };
-	}
+function buildContext({ res }: Pick<BaseParams, "res">) {
 
 	if (res !== null && res !== undefined) {
 		return { res };

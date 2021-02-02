@@ -2,16 +2,9 @@
 	"name": "@capsule-corp/now-shopify-auth",
 	"version": "1.0.6",
 	"description": "Authenticate your Next.js app and ZEIT Now serverless functions with Shopify.",
-	"author": {
-		"email": "mokht@rmi.al",
-		"name": "Mokhtar Mial",
-		"url": "https://www.mokhtar.dev"
-	},
+	"author": "Mokhtar Mial <mokht@rmi.al> (https://www.mokhtar.dev)",
 	"license": "MIT",
-	"repository": {
-		"type": "git",
-		"url": "git+https://github.com/capsule-corp/now-shopify-auth.git"
-	},
+	"repository": "git+https://github.com/capsule-corp/now-shopify-auth.git",
 	"bugs": {
 		"url": "https://github.com/capsule-corp/now-shopify-auth/issues"
 	},
@@ -28,20 +21,20 @@
 		"test": "echo 'test'"
 	},
 	"dependencies": {
-		"@shopify/network": "1.4.6",
-		"nonce": "1.0.4",
-		"nookies": "2.0.8",
-		"querystring": "0.2.0",
-		"safe-compare": "1.1.4"
+		"@shopify/network": "^1.6.0",
+		"nonce": "^1.0.4",
+		"nookies": "^2.5.2",
+		"querystring": "^0.2.0",
+		"safe-compare": "^1.1.4"
 	},
 	"devDependencies": {
-		"@now/node": "1.4.1",
-		"@types/isomorphic-fetch": "0.0.35",
-		"@types/node": "13.7.1",
-		"@types/safe-compare": "1.1.0",
-		"typescript": "3.7.5"
+		"@types/isomorphic-fetch": "^0.0.35",
+		"@types/node": "^14.14.22",
+		"@types/safe-compare": "^1.1.0",
+		"@vercel/node": "^1.9.0",
+		"typescript": "^4.1.3"
 	},
 	"peerDependencies": {
-		"isomorphic-fetch": ">=2.0.0"
+		"isomorphic-fetch": "^3.0.0"
 	}
 }

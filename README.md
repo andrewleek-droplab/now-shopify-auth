@@ -97,10 +97,10 @@ class MyShopifyApp extends App<AppProps & { shopOrigin: string }> {
 #### in pages/api/hello-word.ts
 
 ```typescript
-import { NowRequest, NowResponse } from "@now/node";
+import { VercelRequest, VercelResponse } from "@vercel/node";
 import { verifyRequest } from "now-shopify-auth";
 
-export default async function sendTestNotification(req: NowRequest, res: NowResponse): Promise<void> {
+export default async function sendTestNotification(req: VercelRequest, res: VercelResponse): Promise<void> {
     const authRoute = "/api/shopify/auth";
     const fallbackRoute = "/login";
     const verifyTokenUrl = `https://myshopifyapp.com/api/shopify/verify-token`;
@@ -155,12 +155,12 @@ Theses files will need the following content for the authentication and verifica
 #### /api/shopify/auth/callback
 
 ```typescript
-import { NowRequest, NowResponse } from "@now/node";
+import { VercelRequest, VercelResponse } from "@vercel/node";
 import createShopifyAuth from "now-shopify-auth";
 
 import { shopifyAuthOptions } from "../../../config";
 
-export default async function shopifyAuthCallback(req: NowRequest, res: NowResponse): Promise<void> {
+export default async function shopifyAuthCallback(req: VercelRequest, res: VercelResponse): Promise<void> {
 	const { oAuthCallback } = createShopifyAuth(shopifyAuthOptions);
 
 	await oAuthCallback(req, res);
@@ -170,12 +170,12 @@ export default async function shopifyAuthCallback(req: NowRequest, res: NowRespo
 #### /api/shopify/auth/enable-cookies
 
 ```typescript
-import { NowRequest, NowResponse } from "@now/node";
+import { VercelRequest, VercelResponse } from "@vercel/node";
 import createShopifyAuth from "now-shopify-auth";
 
 import { shopifyAuthOptions } from "../../../config";
 
-export default async function shopifyAuthEnableCookies(req: NowRequest, res: NowResponse): Promise<void> {
+export default async function shopifyAuthEnableCookies(req: VercelRequest, res: VercelResponse): Promise<void> {
 	const { enableCookies } = createShopifyAuth(shopifyAuthOptions);
 
 	await enableCookies(req, res);
@@ -185,12 +185,12 @@ export default async function shopifyAuthEnableCookies(req: NowRequest, res: Now
 #### /api/shopify/auth/index
 
 ```typescript
-import { NowRequest, NowResponse } from "@now/node";
+import { VercelRequest, VercelResponse } from "@vercel/node";
 import createShopifyAuth, { hasCookieAccess, shouldPerformInlineOAuth } from "now-shopify-auth";
 
 import { shopifyAuthOptions } from "../../../config";
 
-export default async function shopifyAuthIndex(req: NowRequest, res: NowResponse): Promise<void> {
+export default async function shopifyAuthIndex(req: VercelRequest, res: VercelResponse): Promise<void> {
 	const {
 		enableCookiesRedirect,
 		oAuthStart,
@@ -214,12 +214,12 @@ export default async function shopifyAuthIndex(req: NowRequest, res: NowResponse
 #### /api/shopify/auth/inline
 
 ```typescript
-import { NowRequest, NowResponse } from "@now/node";
+import { VercelRequest, VercelResponse } from "@vercel/node";
 import createShopifyAuth from "now-shopify-auth";
 
 import { shopifyAuthOptions } from "../../../config";
 
-export default async function shopifyAuthInline(req: NowRequest, res: NowResponse): Promise<void> {
+export default async function shopifyAuthInline(req: VercelRequest, res: VercelResponse): Promise<void> {
 	const { oAuthStart } = createShopifyAuth(shopifyAuthOptions);
 
 	await oAuthStart(req, res);
@@ -231,10 +231,10 @@ export default async function shopifyAuthInline(req: NowRequest, res: NowRespons
 This is a simple proxy route to avoid CORS issues we would face by hitting Shopify API from a different domain
 
 ```typescript
-import { NowRequest, NowResponse } from "@now/node";
+import { VercelRequest, VercelResponse } from "@vercel/node";
 import fetch from "isomorphic-fetch";
 
-export default async function verifyToken(req: NowRequest, res: NowResponse): Promise<void> {
+export default async function verifyToken(req: VercelRequest, res: VercelResponse): Promise<void> {
 	const { shopOrigin, shopifyToken } = req.cookies;
 
     const response = await fetch(

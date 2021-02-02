@@ -1,4 +1,4 @@
-import { NowRequest, NowResponse } from "@now/node";
+import { VercelRequest, VercelResponse } from "@vercel/node";
 
 import { OAuthStartOptions } from "../types";
 import ShopifyError, { ErrorResponse } from "./errors";
@@ -9,7 +9,7 @@ const FOOTER = "Cookies let the app authenticate you by temporarily storing your
 const ACTION = "Enable cookies";
 
 export default function createEnableCookies({ apiKey }: OAuthStartOptions) {
-	return function enableCookies(req: NowRequest, res: NowResponse) {
+	return function enableCookies(req: VercelRequest, res: VercelResponse) {
 		const query = req.query as Record<string, string>;
 		const { shop } = query;
 

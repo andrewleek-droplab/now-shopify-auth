@@ -1,4 +1,4 @@
-import { NowRequest, NowResponse } from "@now/node";
+import { VercelRequest, VercelResponse } from "@vercel/node";
 import querystring from "querystring";
 // @ts-ignore
 import nonce from "nonce";
@@ -9,8 +9,8 @@ import { setCookie } from "../helpers/nookies";
 const createNonce = nonce() as () => number;
 
 export default function oAuthQueryString(
-	req: NowRequest,
-	res: NowResponse,
+	req: VercelRequest,
+	res: VercelResponse,
 	options: OAuthStartOptions,
 	callbackPath: string,
 ) {
